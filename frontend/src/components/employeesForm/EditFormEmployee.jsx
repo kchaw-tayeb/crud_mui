@@ -3,18 +3,14 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 
 import IconButton from "@mui/material/IconButton";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import SaveIcon from "@mui/icons-material/Save";
-import { Link } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Typography from "@mui/material/Typography";
 
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import CloseIcon from "@mui/icons-material/Close";
@@ -34,7 +30,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
         const { data: response } = await axios.get(
           `/api/employees/employer/${id}`
         );
-        // setCompanies(response);
+
         console.log(data);
         setFirstName(response.firstName);
         setSecondName(response.secondName);
@@ -67,8 +63,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
           setSecondName("");
           setPhone(0);
           setCompany("");
-          // navigate("/");
-          // history.push("/");
+
           hidePopup();
         })
         .catch((err) => {
@@ -92,8 +87,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
     <Box
       sx={{
         borderRadius: "6px",
-        // borderColor: "text.primary",
-        // border: 1,
+
         "& .MuiButton-root": {
           backgroundColor: "rgb(55, 111, 208)",
           color: "rgb(255, 255, 255)",
@@ -106,14 +100,11 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
       <Paper
         elevation={0}
         sx={{
-          //   margin: 5,
-          //   padding: 3,
           "& .MuiFormLabel-root": {
             fontSize: "0.85rem",
             color: "#495057",
           },
 
-          // width: "995px",
           width: "100%",
           mb: 1,
 
@@ -137,7 +128,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
                 lineHeight: 1.25,
                 color: "black",
                 justifyContent: "flex-start",
-                // mb: 1,
+
                 mt: 1,
               }}
             >
@@ -226,24 +217,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
               })}
             />
           </Box>
-          {/* <Link to="/">
-            <IconButton
-              color="default"
-              aria-label="upload picture"
-              component="span"
-            >
-              <ArrowBackIcon />
-            </IconButton>
-          </Link> */}
-          {/* <IconButton
-            color="default"
-            aria-label="upload picture"
-            component="span"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            <SaveIcon />
-          </IconButton> */}
+
           <Button
             variant="contained"
             type="submit"

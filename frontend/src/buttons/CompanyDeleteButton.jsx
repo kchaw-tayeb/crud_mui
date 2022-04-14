@@ -25,7 +25,6 @@ function CompanyDeleteButton({ row, setDeleteI }) {
         axios
           .delete(`/api/companies/${id}`)
 
-          // .delete("/api/companies/6200b641479c02277c371b3b")
           .then(setDeleteI(true))
           .catch((error) => {
             console.error("There was an error!", error);
@@ -40,7 +39,6 @@ function CompanyDeleteButton({ row, setDeleteI }) {
         color="default"
         aria-label="upload picture"
         component="span"
-        // onClick={handleDelete}
         onClick={() => handleDelete(row._id)}
         size={"small"}
       >

@@ -10,8 +10,8 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { useState, useEffect } from "react";
-import Chip from "@mui/material/Chip";
+import { useState } from "react";
+
 import CountrySelect from "../components/controls/Autocomplete";
 import Checkboxes from "../components/controls/Chekbox";
 import RadioButtonsGroup from "../components/controls/RadioButton";
@@ -52,7 +52,7 @@ const Controls = () => {
         sx={{
           borderRadius: "6px",
           borderColor: "text.primary",
-          // border: 1,
+
           "& .MuiButton-root": {
             backgroundColor: "rgb(55, 111, 208)",
             color: "rgb(255, 255, 255)",
@@ -68,14 +68,11 @@ const Controls = () => {
         <Paper
           elevation={0}
           sx={{
-            //   margin: 5,
-            //   padding: 3,
             "& .MuiFormLabel-root": {
               fontSize: "0.85rem",
               color: "#495057",
             },
 
-            // width: "995px",
             width: "100%",
 
             borderRadius: "6px",
@@ -164,41 +161,8 @@ const Controls = () => {
                 onChange={(e) => setTva(e.target.value)}
                 size="small"
               />
-              {/* <TextField
-              id="outlined-basic"
-              label="Tva"
-              variant="outlined"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-              size="small"
-            /> */}
-              {/* <TextField
-              id="outlined-basic"
-              label="Tva"
-              variant="outlined"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-              size="small"
-            /> */}
             </Box>
-            {/* <Link to="/">
-            <IconButton
-              color="default"
-              aria-label="upload picture"
-              component="span"
-            >
-              <ArrowBackIcon />
-            </IconButton>
-          </Link> */}
-            {/* <IconButton
-            color="default"
-            aria-label="upload picture"
-            component="span"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            <SaveIcon />
-          </IconButton> */}
+
             <Divider
               textAlign="left"
               orientation="horizontal"
@@ -206,20 +170,7 @@ const Controls = () => {
             >
               Left
             </Divider>
-            {/* <Typography
-              variant="h6"
-              sx={{
-                fontSize: "1rem",
-                fontWeight: 500,
-                lineHeight: 1.25,
-                color: "black",
 
-                mb: 1,
-                mt: 1,
-              }}
-            >
-              Formik
-            </Typography> */}
             <Box
               component="form"
               sx={{
@@ -282,11 +233,10 @@ const Controls = () => {
                 </Grid>
               </Box>
             </Box>
-            {/* Button */}
+
             <Button
               variant="contained"
               type="submit"
-              //   onClick={handleSubmit}
               sx={{ mt: "12px" }}
               disableElevation
             >
@@ -295,7 +245,6 @@ const Controls = () => {
             <Button
               variant="contained"
               type="submit"
-              //   onClick={() => navigate("/")}
               sx={{ mt: "12px", ml: 2 }}
               disableElevation
             >

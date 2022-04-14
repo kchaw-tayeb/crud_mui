@@ -3,41 +3,37 @@ import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
+
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
+
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import ListSubheader from "@mui/material/ListSubheader";
+
 import Collapse from "@mui/material/Collapse";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
+
 import SendIcon from "@mui/icons-material/Send";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
+
 import ListItemButton from "@mui/material/ListItemButton";
 
 import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+
 import Badge from "@mui/material/Badge";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import Grid from "@mui/material/Grid";
-import NotesIcon from "@mui/icons-material/Notes";
+
 import { useNavigate, useLocation } from "react-router-dom";
-import Container from "@mui/material/Container";
+
 import Avatar from "@mui/material/Avatar";
-import { styled } from "@mui/system";
-import Scrollbar from "react-perfect-scrollbar";
 import {
   Sliders,
   Layout as Layouts,
@@ -51,11 +47,7 @@ import {
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 const drawerWidth = 258;
-const StyledScrollBar = styled(Scrollbar)(() => ({
-  paddingLeft: "1rem",
-  paddingRight: "1rem",
-  position: "relative",
-}));
+
 const iconList = {
   color: "rgb(238, 238, 238)",
   fontSize: "20px",
@@ -86,7 +78,7 @@ const itemListActive = {
   opacity: 20,
   backgroundColor: "rgb(30, 41, 58)",
 };
-const itemListNested = {};
+
 const expandLess = {
   color: "#eeeeee",
   fontSize: "20px",
@@ -114,17 +106,17 @@ const collapseActive = {
 function Layout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [openD, setOpenD] = React.useState(true);
+  const [openD, setOpenD] = React.useState(false);
 
   const handleClickD = () => {
     setOpenD(!openD);
   };
-  const [openP, setOpenP] = React.useState(true);
+  const [openP, setOpenP] = React.useState(false);
 
   const handleClickP = () => {
     setOpenP(!openP);
   };
-  const [openI, setOpenI] = React.useState(true);
+  const [openI, setOpenI] = React.useState(false);
 
   const handleClickI = () => {
     setOpenI(!openI);
@@ -157,7 +149,6 @@ function Layout(props) {
             justifyContent: "center",
           }}
         >
-          {/* <NotesIcon color="primary" sx={{ marginRight: "8px" }} /> */}
           <Box sx={{ marginLeft: "21px" }}>Material App</Box>
         </Box>
       </Toolbar>
@@ -172,8 +163,7 @@ function Layout(props) {
 
           "& .MuiListItemIcon-root": {
             color: "#e0e0e0eb",
-            // height: "20px",
-            // width: "20px",
+
             opacity: 0.5,
             minWidth: "20px",
             minHeight: "20px",
@@ -191,11 +181,6 @@ function Layout(props) {
               height: "20px",
               opacity: 0.5,
             },
-            // "& .MuiListItemButton-root": {
-            //   "&:hover": {
-            //     background: "#202C3F",
-            //   },
-            // },
           },
         }}
         component="nav"
@@ -310,7 +295,6 @@ function Layout(props) {
           onClick={() => navigate("/")}
         >
           <ListItemIcon>
-            {/* <SendIcon /> */}
             <Briefcase size={20} color="#eeeeee" />
           </ListItemIcon>
           <ListItemText primary="Companies" />
@@ -482,10 +466,6 @@ function Layout(props) {
                 placeholder="Search topics..."
                 startAdornment={<Search size={26} color="#9e9e9e" />}
                 sx={{
-                  // opacity: "0.6",
-
-                  // padding: `0px 1px`,
-                  // justifyContent: "flex-start",
                   fontSize: "0.8rem",
                   "&:hover": {
                     backgroundColor: "#f2f2f2",
@@ -562,7 +542,7 @@ function Layout(props) {
           </Box>
         </Toolbar>
       </AppBar>
-      {/* <Header /> */}
+
       <Box
         component="nav"
         sx={{
@@ -620,13 +600,11 @@ function Layout(props) {
         <Box
           component="main"
           sx={{
-            // flexGrow: 1,
             p: 6,
-            // width: { sm: `calc(100% - ${drawerWidth}px)` },
+
             backgroundColor: "#f7f9fc",
             minHeight: "90vh",
             overflow: "auto",
-            // paddingBottom: "180px",
           }}
         >
           <Toolbar />
@@ -658,29 +636,6 @@ function Layout(props) {
           </AppBar>
         </Box>
       </Box>
-
-      {/* <AppBar
-        position="relative"
-        sx={{
-          backgroundColor: "rgb(255, 255, 255)",
-          color: "rgb(158, 158, 158)",
-        }}
-      >
-        <Toolbar>
-          <Box sx={{ mr: 1 }}>
-            <Typography variant="body1">Support</Typography>
-          </Box>
-          <Box sx={{ ml: 1, mr: 1 }}>
-            <Typography variant="body1">Help Center</Typography>
-          </Box>
-          <Box sx={{ ml: 1, mr: 1 }}>
-            <Typography variant="body1">Privacy</Typography>
-          </Box>
-          <Box sx={{ ml: 1, mr: 1 }}>
-            <Typography variant="body1">Terms of Service</Typography>
-          </Box>
-        </Toolbar>
-      </AppBar> */}
     </Box>
   );
 }

@@ -4,11 +4,10 @@ import IconButton from "@mui/material/IconButton";
 import CenterFocusWeakIcon from "@mui/icons-material/CenterFocusWeak";
 
 import { useNavigate } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
 
 export function DetailsButton({ row }) {
   const navigate = useNavigate();
-  // const history = useHistory();
+
   const handlePush = (id) => {
     navigate(`/company/${row._id}`);
   };

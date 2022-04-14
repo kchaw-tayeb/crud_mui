@@ -23,39 +23,6 @@ import { DetailsButton } from "../../buttons/CompanyDetailsButton";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 
 import Button from "@mui/material/Button";
-const EnhancedTableToolbar = () => {
-  const navigate = useNavigate();
-  return (
-    <Toolbar
-      sx={{
-        pl: { sm: 1.6 },
-        pr: { xs: 1, sm: 1 },
-        minHeight: "30px",
-      }}
-      variant="dense"
-    >
-      <Typography
-        sx={{ flex: "1 1 100%", mb: 0.1 }}
-        variant="h6"
-        id="tableTitle"
-        component="div"
-        color="black"
-      >
-        Companies List
-      </Typography>
-      <Tooltip title="Add a new company" sx={{ mr: 0.001 }}>
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="span"
-          onClick={() => navigate("/add")}
-        >
-          <AddBoxOutlinedIcon />
-        </IconButton>
-      </Tooltip>
-    </Toolbar>
-  );
-};
 
 export default function TableCompany() {
   /////////////////////////////
@@ -75,7 +42,7 @@ export default function TableCompany() {
         sx={{
           borderRadius: "6px",
           borderColor: "text.primary",
-          // border: 1,
+
           bgcolor: "background.paper",
 
           "& .MuiTableRow-root ": {
@@ -89,7 +56,6 @@ export default function TableCompany() {
         }}
       >
         <Paper elevation={0} sx={{ width: "100%", mb: 1, borderRadius: "6px" }}>
-          {/* <EnhancedTableToolbar /> */}
           <Box
             sx={{
               display: "flex",
@@ -106,9 +72,7 @@ export default function TableCompany() {
                 lineHeight: 1.25,
                 color: "black",
                 justifyContent: "flex-start",
-                // mb: 1,
-                // ml: 2,
-                // pt: 2,
+
                 mt: 2,
                 ml: 2,
               }}
@@ -186,21 +150,6 @@ export default function TableCompany() {
           </TableContainer>
         </Paper>
       </Box>
-      {/* <Box
-        sx={{
-          fontSize: "1rem",
-          fontWeight: 500,
-          lineHeight: 1.25,
-          color: "black",
-          backgroundColor: "#f7f9fc",
-
-          mb: 20,
-          ml: 2,
-          pt: 2,
-        }}
-      >
-        footer
-      </Box> */}
     </>
   );
 }

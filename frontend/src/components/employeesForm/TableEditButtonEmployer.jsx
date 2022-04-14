@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "../utils/Popup";
 import EditFormEmployee from "../employeesForm/EditFormEmployee";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 

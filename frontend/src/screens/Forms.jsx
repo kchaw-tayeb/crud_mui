@@ -10,8 +10,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { useState, useEffect } from "react";
-import Chip from "@mui/material/Chip";
+import { useState } from "react";
 
 const Forms = () => {
   const [name, setName] = useState("");
@@ -47,7 +46,7 @@ const Forms = () => {
         sx={{
           borderRadius: "6px",
           borderColor: "text.primary",
-          // border: 1,
+
           "& .MuiButton-root": {
             backgroundColor: "rgb(55, 111, 208)",
             color: "rgb(255, 255, 255)",
@@ -60,14 +59,11 @@ const Forms = () => {
         <Paper
           elevation={0}
           sx={{
-            //   margin: 5,
-            //   padding: 3,
             "& .MuiFormLabel-root": {
               fontSize: "0.85rem",
               color: "#495057",
             },
 
-            // width: "995px",
             width: "100%",
 
             borderRadius: "6px",
@@ -172,75 +168,15 @@ const Forms = () => {
                 onChange={(e) => setTva(e.target.value)}
                 size="small"
               />
-              {/* <TextField
-              id="outlined-basic"
-              label="Tva"
-              variant="outlined"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-              size="small"
-            /> */}
-              {/* <TextField
-              id="outlined-basic"
-              label="Tva"
-              variant="outlined"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-              size="small"
-            /> */}
             </Box>
-            {/* <Link to="/">
-            <IconButton
-              color="default"
-              aria-label="upload picture"
-              component="span"
-            >
-              <ArrowBackIcon />
-            </IconButton>
-          </Link> */}
-            {/* <IconButton
-            color="default"
-            aria-label="upload picture"
-            component="span"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            <SaveIcon />
-          </IconButton> */}
-            {/* <Typography
-              variant="h6"
-              sx={{
-                fontSize: "1rem",
-                fontWeight: 500,
-                lineHeight: 1.25,
-                color: "black",
 
-                mb: 1,
-                mt: 1,
-              }}
-            >
-              Formik
-            </Typography> */}
             <Divider
               textAlign="left"
               sx={{ marginTop: "24px", marginBottom: "24px" }}
             >
               address
             </Divider>
-            {/* <Typography
-              variant="h6"
-              sx={{
-                fontSize: "1rem",
-                fontWeight: 500,
-                lineHeight: 1.25,
-                color: "black",
 
-                mb: 1,
-                mt: 1,
-              }}
-            >
-              Formik
-            </Typography> */}
             <Box
               component="form"
               sx={{
@@ -314,7 +250,6 @@ const Forms = () => {
             <Button
               variant="contained"
               type="submit"
-              //   onClick={handleSubmit}
               sx={{ mt: "12px" }}
               disableElevation
             >
@@ -323,7 +258,6 @@ const Forms = () => {
             <Button
               variant="contained"
               type="submit"
-              //   onClick={() => navigate("/")}
               sx={{ mt: "12px", ml: 2 }}
               disableElevation
             >

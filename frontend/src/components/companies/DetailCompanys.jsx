@@ -12,9 +12,6 @@ import { listCompanyDetails } from "../../actions/companyActions";
 import { useParams } from "react-router-dom";
 import Temployers from "../Temployee";
 
-// import Popup from "../utils/Popup";
-// import AddFormEmployer from "../employeesForm/AddFormEmployer";
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -91,33 +88,7 @@ export default function BasicTabs() {
               <Tab label="EMPLOYEES" {...a11yProps(1)} />
             </Tabs>
           </Box>
-          {/* <Box sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
-            <Typography
-              variant="h5"
-              component="span"
-              gutterBottom
-              sx={{
-                fontWeight: 600,
-                lineHeight: 1.25,
-                mt: 1.5,
-                ml: 7,
-              }}
-            >
-              company details
-            </Typography>
-            <Tooltip title="Add a new employee" sx={{ ml: 100 }}>
-              <IconButton
-                color="default"
-                aria-label="upload picture"
-                component="span"
-                onClick={() => setOpenPopup(true)}
-              >
-                <AddIcon />
-              </IconButton>
-            </Tooltip>
-          </Grid>
-        </Box> */}
+
           <Box sx={{ "& .MuiBox-root": { p: 0 } }}>
             <TabPanel value={value} index={0}>
               <DetailsCompnay company={company} />
@@ -127,9 +98,6 @@ export default function BasicTabs() {
             </TabPanel>
           </Box>
         </Box>
-        {/* <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}>
-          <AddFormEmployer hidePopup={hidePopup} id={id} />
-        </Popup> */}
       </Paper>
     </Box>
   );

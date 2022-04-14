@@ -1,6 +1,6 @@
 import React from "react";
 import ConfirmDialog from "../utils/ConfirmDialog";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import IconButton from "@mui/material/IconButton";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -27,7 +27,6 @@ function TableDeleteButtonEmployer({ row, setDeleteIE, deleteIE }) {
         axios
           .delete(`/api/employees/${id}`)
 
-          // .delete("/api/companies/6200b641479c02277c371b3b")
           .then(setDeleteIE(deletei))
           .catch((error) => {
             console.error("There was an error!", error);
@@ -42,7 +41,6 @@ function TableDeleteButtonEmployer({ row, setDeleteIE, deleteIE }) {
         color="default"
         aria-label="upload picture"
         component="span"
-        // onClick={handleDelete}
         onClick={() => handleDelete(row._id)}
       >
         <DeleteForeverIcon />

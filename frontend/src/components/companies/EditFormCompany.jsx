@@ -56,7 +56,6 @@ function EditFormCompany() {
           setPhone(0);
           setTva("");
           navigate("/");
-          // history.push("/tables");
         })
         .catch((err) => {
           console.log(err);
@@ -81,7 +80,7 @@ function EditFormCompany() {
       sx={{
         borderRadius: "6px",
         borderColor: "text.primary",
-        // border: 1,
+
         "& .MuiButton-root": {
           backgroundColor: "rgb(55, 111, 208)",
           color: "rgb(255, 255, 255)",
@@ -94,8 +93,6 @@ function EditFormCompany() {
       <Paper
         elevation={0}
         sx={{
-          //   margin: 5,
-          //   padding: 3,
           "& .MuiFormLabel-root": {
             fontSize: "0.85rem",
             color: "#495057",
@@ -202,41 +199,8 @@ function EditFormCompany() {
                 helperText: errors.tva,
               })}
             />
-            {/* <TextField
-              id="outlined-basic"
-              label="Tva"
-              variant="outlined"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-              size="small"
-            /> */}
-            {/* <TextField
-              id="outlined-basic"
-              label="Tva"
-              variant="outlined"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-              size="small"
-            /> */}
           </Box>
-          {/* <Link to="/">
-            <IconButton
-              color="default"
-              aria-label="upload picture"
-              component="span"
-            >
-              <ArrowBackIcon />
-            </IconButton>
-          </Link> */}
-          {/* <IconButton
-            color="default"
-            aria-label="upload picture"
-            component="span"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            <SaveIcon />
-          </IconButton> */}
+
           <Button
             variant="contained"
             type="submit"

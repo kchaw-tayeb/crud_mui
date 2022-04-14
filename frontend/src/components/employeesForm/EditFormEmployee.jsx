@@ -55,7 +55,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
       };
       console.log(firstName);
       axios
-        .post("/api/employees", data)
+        .put(`/api/employees/${id}`, data)
 
         .then((res) => {
           setData(res.data);

@@ -27,7 +27,7 @@ function TableDeleteButtonEmployer({ row, setDeleteIE, deleteIE }) {
         axios
           .delete(`/api/employees/${id}`)
 
-          .then(setDeleteIE(deletei))
+          .then((deletei) => setDeleteIE(deletei))
           .catch((error) => {
             console.error("There was an error!", error);
           });

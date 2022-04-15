@@ -5,8 +5,12 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ConfirmDialog from "../components/utils/ConfirmDialog";
+import { useNavigate } from "react-router-dom";
 
-function CompanyDeleteButton({ row, setDeleteI }) {
+function CompanyDeleteButton({ row, setDeleteI, deleteI }) {
+  const deletei = !deleteI;
+  const navigate = useNavigate();
+
   const [confirmDialog, setConfirmDialog] = useState({
     isOpen: false,
     title: "",
@@ -25,7 +29,8 @@ function CompanyDeleteButton({ row, setDeleteI }) {
         axios
           .delete(`/api/companies/${id}`)
 
-          .then(setDeleteI(true))
+          .then((deletei) => setDeleteI(deletei))
+
           .catch((error) => {
             console.error("There was an error!", error);
           });

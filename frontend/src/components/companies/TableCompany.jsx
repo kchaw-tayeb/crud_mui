@@ -140,7 +140,11 @@ export default function TableCompany() {
                     <TableCell align="left">{row.tva}</TableCell>
                     <TableCell align="right" padding="none" sx={{ pr: 1 }}>
                       <EditButton row={row} />
-                      <CompanyDeleteButton row={row} setDeleteI={setDeleteI} />
+                      <CompanyDeleteButton
+                        row={row}
+                        setDeleteI={setDeleteI}
+                        deleteI={deleteI}
+                      />
                       <DetailsButton row={row} />
                     </TableCell>
                   </TableRow>

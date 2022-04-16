@@ -87,9 +87,9 @@ const theme = createTheme({
       lineHeight: 1.75,
     },
   },
-  shape: {
-    borderRadius: "0.2rem",
-  },
+  // shape: {
+  //   borderRadius: "0.2rem",
+  // },
   overrides: {
     MuiButton: {
       root: {

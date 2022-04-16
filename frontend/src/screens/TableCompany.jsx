@@ -15,7 +15,8 @@ const TableCompany = () => {
       <Typography
         variant="h3"
         component="div"
-        gutterBottomsx={{
+        gutterBottom
+        sx={{
           margin: "0px 0px ",
           fontWeight: 600,
           lineHeight: 1.25,

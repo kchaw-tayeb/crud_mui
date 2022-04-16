@@ -74,7 +74,7 @@ export default function Temployee({ id }) {
             <TableBody>
               {employees.map((row) => (
                 <TableRow
-                  key={row.name}
+                  key={row._id}
                   sx={{
                     "&:last-child td, &:last-child th": { border: 0 },
                     "& .MuiTableCell-root": {

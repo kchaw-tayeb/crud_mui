@@ -8,7 +8,7 @@ function DetailsCompnay({ company }) {
   return (
     <Paper elevation={0} sx={{ minWidth: 275 }}>
       <CardContent sx={{ mb: 0.1 }}>
-        <Typography variant="body2">
+        <Typography variant="body2" component={"span"}>
           Name : {company.name}
           <br />
           <br />

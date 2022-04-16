@@ -205,7 +205,7 @@ function Layout(props) {
         <ListItemButton
           onClick={handleClickD}
           sx={itemList}
-          disableGutters="true"
+          disableGutters={true}
         >
           <ListItemIcon>
             <Sliders size={20} color="#eeeeee" />
@@ -426,7 +426,7 @@ function Layout(props) {
         }}
         elevation={0}
       >
-        <Toolbar disableGutters="true" sx={{ pl: "12px", pr: "12px" }}>
+        <Toolbar disableGutters={true} sx={{ pl: "12px", pr: "12px" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

@@ -41,6 +41,7 @@ export default function TableCompany() {
       <Box
         sx={{
           borderRadius: "6px",
+
           borderColor: "text.primary",
 
           bgcolor: "background.paper",
@@ -55,7 +56,8 @@ export default function TableCompany() {
           },
         }}
       >
-        <Paper elevation={0} sx={{ width: "100%", mb: 1, borderRadius: "6px" }}>
+        {/* <Paper elevation={0} sx={{ width: "100%", mb: 1, borderRadius: "6px" }}> */}
+        <Paper elevation={0} sx={{ width: "100%", mb: 1 }}>
           <Box
             sx={{
               display: "flex",

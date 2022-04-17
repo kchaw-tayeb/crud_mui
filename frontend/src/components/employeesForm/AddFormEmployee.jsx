@@ -31,7 +31,7 @@ function AddFormEmployee({ hidePopup, id }) {
         phone: phone,
         company: company,
       };
-      console.log(firstName);
+
       axios
         .post("/api/employees", data)
 

@@ -7,7 +7,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 function TableDeleteButtonEmployer({ row, setDeleteIE, deleteIE }) {
   const deletei = !deleteIE;
-  console.log(deletei);
+
   const [confirmDialog, setConfirmDialog] = useState({
     isOpen: false,
     title: "",

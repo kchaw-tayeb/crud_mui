@@ -31,7 +31,7 @@ function EditFormEmployee({ hidePopup, setEditEmployer, row }) {
           `/api/employees/employer/${id}`
         );
 
-        console.log(data);
+        
         setFirstName(response.firstName);
         setSecondName(response.secondName);
         setPhone(response.phone);

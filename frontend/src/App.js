@@ -8,7 +8,8 @@ import EditCompany from "./screens/EditCompany";
 import CompanyDetail from "./screens/CompanyDetail";
 import Layout from "./Layout";
 import Forms from "./screens/Forms";
-import Controls from "./screens/Controls";
+import Controls from "./screens/Control";
+import DataGrid from "./screens/DataGrid";
 
 const theme = createTheme({
   palette: {
@@ -116,6 +117,7 @@ function App() {
             <Route exact path="/company/:id" element={<CompanyDetail />} />
             <Route exact path="/forms" element={<Forms />} />
             <Route exact path="/controls" element={<Controls />} />
+            <Route exact path="/grid" element={<DataGrid />} />
           </Routes>
         </Layout>
       </Router>

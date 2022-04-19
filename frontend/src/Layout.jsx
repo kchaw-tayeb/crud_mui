@@ -239,7 +239,10 @@ function Layout(props) {
         </Collapse>
         <Collapse in={openD} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={collapse}>
+            <ListItemButton
+              sx={location.pathname == "/grid" ? collapseActive : collapse}
+              onClick={() => navigate("/grid")}
+            >
               <ListItemText primary="Saas" />
             </ListItemButton>
           </List>

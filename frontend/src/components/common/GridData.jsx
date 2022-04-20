@@ -1,6 +1,9 @@
 import React from "react";
 
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import { useDispatch, useSelector } from "react-redux";
+import { listEmployees } from "../../actions/employeeActions";
+import { useState, useEffect } from "react";
 
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
@@ -15,7 +18,7 @@ const rows = [
 ];
 
 const columns = [
-  { field: "id", headerName: "ID", width: 90 },
+  // { field: "_id", headerName: "ID", width: 90 },
   {
     field: "firstName",
     headerName: "First name",
@@ -23,14 +26,14 @@ const columns = [
     editable: true,
   },
   {
-    field: "lastName",
+    field: "secondName",
     headerName: "Last name",
     width: 150,
     editable: true,
   },
   {
-    field: "age",
-    headerName: "Age",
+    field: "phone",
+    headerName: "Phone",
     type: "number",
     width: 110,
     editable: true,
@@ -42,15 +45,24 @@ const columns = [
     sortable: false,
     width: 160,
     valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+      `${params.row.firstName || ""} ${params.row.secondName || ""}`,
   },
 ];
 
 const GridData = () => {
+  const dispatch = useDispatch();
+  const employeesList = useSelector((state) => state.employeeList);
+  const { loading, error, employees } = employeesList;
+  useEffect(() => {
+    dispatch(listEmployees());
+  }, [dispatch]);
+  const row = employees;
+  console.log(row);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={rows}
+        getRowId={(r) => r._id}
+        rows={row}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}

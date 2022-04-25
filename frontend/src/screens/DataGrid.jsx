@@ -83,7 +83,7 @@ const DataGrid = () => {
                 lineHeight: 1.25,
                 color: "black",
 
-                mb: 1,
+                mb: 2,
                 mt: 1,
                 ml: 2,
               }}

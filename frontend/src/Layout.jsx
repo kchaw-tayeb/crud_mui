@@ -233,7 +233,7 @@ function Layout(props) {
               sx={location.pathname == "/controls" ? collapseActive : collapse}
               onClick={() => navigate("/controls")}
             >
-              <ListItemText primary="Analytics" />
+              <ListItemText primary="Controls" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -243,7 +243,7 @@ function Layout(props) {
               sx={location.pathname == "/grid" ? collapseActive : collapse}
               onClick={() => navigate("/grid")}
             >
-              <ListItemText primary="Saas" />
+              <ListItemText primary="Data grid" />
             </ListItemButton>
           </List>
         </Collapse>

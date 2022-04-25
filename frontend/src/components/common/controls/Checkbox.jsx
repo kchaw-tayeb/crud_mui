@@ -18,6 +18,7 @@ export default function Checkbox(props) {
   return (
     <FormControl>
       <FormControlLabel
+        label={label}
         control={
           <MuiCheckbox
             name={name}
@@ -28,7 +29,6 @@ export default function Checkbox(props) {
             }
           />
         }
-        label={label}
       />
     </FormControl>
   );

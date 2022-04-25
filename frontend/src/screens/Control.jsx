@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
@@ -13,6 +13,13 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import Controls from "../components/common/controls/Controls";
 import { useForm, Form } from "../components/common/UseForm";
+import Rating from "../components/common/controls/Rating";
+import Slider from "../components/common/controls/Slider";
+
+import Switch from "../components/common/controls/Switch";
+import ToggleButton from "../components/common/controls/ToggleButton";
+import TransferList from "../components/common/controls/TransferList";
+import BasicDatePicker from "../components/common/controls/DatePicker";
 
 const genderItems = [
   { id: "male", title: "Male" },
@@ -24,8 +31,11 @@ const initialFValues = {
 
   gender: "male",
   departmentId: "",
-
+  skills: "",
   isPermanent: false,
+  hireDate: new Date(),
+  range: [20, 37],
+  rating: 2,
 };
 const Control = () => {
   const validate = (fieldValues = values) => {
@@ -50,6 +60,15 @@ const Control = () => {
       console.log(values);
     }
   };
+  // const [eskills, setEskills] = useState([]);
+  // console.log(eskills);
+  // useEffect(() => {
+  //   setValues({
+  //     ...values,
+  //     skills: eskills.toString(),
+  //   });
+  // }, [eskills]);
+
   return (
     <div>
       <Typography
@@ -184,7 +203,38 @@ const Control = () => {
                 value={values.isPermanent}
                 onChange={handleInputChange}
               />
-              {/* //////////////////////// */}
+              {/* chekbox group */}
+              <Controls.CheckboxGroup
+                name="skills"
+                label="skills"
+                value={values.skills}
+                onChange={handleInputChange}
+                // eskills={eskills}
+                // setEskills={setEskills}
+              />
+              <BasicDatePicker
+                name="hireDate"
+                label="Hire Date"
+                value={values.hireDate}
+                onChange={handleInputChange}
+              />
+
+              <Slider
+                name="range"
+                label="range"
+                value={values.range}
+                onChange={handleInputChange}
+              />
+              <Rating
+                name="rating"
+                label="rating"
+                value={values.rating}
+                onChange={handleInputChange}
+              />
+
+              {/* <Switch />
+              <ToggleButton />
+              <TransferList /> */}
             </Box>
 
             <Button

@@ -247,6 +247,47 @@ function Layout(props) {
             </ListItemButton>
           </List>
         </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={location.pathname == "/chart" ? collapseActive : collapse}
+              onClick={() => navigate("/chart")}
+            >
+              <ListItemText primary="Charts" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={location.pathname == "/chip" ? collapseActive : collapse}
+              onClick={() => navigate("/chip")}
+            >
+              <ListItemText primary="Chip" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={
+                location.pathname == "/basic_grid" ? collapseActive : collapse
+              }
+              onClick={() => navigate("/basic_grid")}
+            >
+              <ListItemText primary="Basic Grid" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItemButton
+          sx={location.pathname == "/" ? itemListActive : itemList}
+          onClick={() => navigate("/")}
+        >
+          <ListItemIcon>
+            <Briefcase size={20} color="#eeeeee" />
+          </ListItemIcon>
+          <ListItemText primary="Companies" />
+        </ListItemButton>
         <ListItemButton onClick={handleClickP} sx={itemList}>
           <ListItemIcon>
             <Layouts size={20} color="#eeeeee" />
@@ -293,15 +334,7 @@ function Layout(props) {
             </ListItemButton>
           </List>
         </Collapse>
-        <ListItemButton
-          sx={location.pathname == "/" ? itemListActive : itemList}
-          onClick={() => navigate("/")}
-        >
-          <ListItemIcon>
-            <Briefcase size={20} color="#eeeeee" />
-          </ListItemIcon>
-          <ListItemText primary="Companies" />
-        </ListItemButton>
+
         <ListItemButton sx={itemList}>
           <ListItemIcon>
             <ShoppingCart size={20} color="#eeeeee" />

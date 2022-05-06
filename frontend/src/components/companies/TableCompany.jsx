@@ -21,8 +21,12 @@ import { EditButton } from "../../buttons/CompnayEditButton";
 import CompanyDeleteButton from "../../buttons/CompanyDeleteButton";
 import { DetailsButton } from "../../buttons/CompanyDetailsButton";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-
+import Chip from "@mui/material/Chip";
 import Button from "@mui/material/Button";
+import CheckIcon from "@mui/icons-material/Check";
+import ClearIcon from "@mui/icons-material/Clear";
+import Toggle from "../utils/Toggle";
+import IconsDisplay from "../utils/IconsDisplay";
 
 export default function TableCompany() {
   /////////////////////////////
@@ -36,6 +40,7 @@ export default function TableCompany() {
   }, [dispatch, deleteI]);
   const rows = companies;
   ////////////////////////////////
+
   return (
     <>
       <Box
@@ -119,6 +124,11 @@ export default function TableCompany() {
                   <TableCell align="left">Adresse</TableCell>
                   <TableCell align="left">phone</TableCell>
                   <TableCell align="left">Tva</TableCell>
+                  <TableCell align="left">State</TableCell>
+                  <TableCell align="left">Check</TableCell>
+                  <TableCell align="left">Clear</TableCell>
+                  <TableCell align="left">isEnabled</TableCell>
+                  <TableCell align="left">Icons</TableCell>
                   <TableCell align="right">actions</TableCell>
                 </TableRow>
               </TableHead>
@@ -140,6 +150,26 @@ export default function TableCompany() {
                     <TableCell align="left">{row.adresse}</TableCell>
                     <TableCell align="left">{row.phone}</TableCell>
                     <TableCell align="left">{row.tva}</TableCell>
+                    <TableCell align="left">
+                      <Chip
+                        label="Chip Outlined"
+                        variant="filled"
+                        color="primary"
+                      />
+                    </TableCell>
+                    <TableCell align="left">
+                      <CheckIcon />
+                    </TableCell>
+                    <TableCell align="left">
+                      <ClearIcon />
+                    </TableCell>
+                    <TableCell align="left">
+                      <Toggle />
+                    </TableCell>
+                    <TableCell align="left">
+                      <IconsDisplay />
+                    </TableCell>
+
                     <TableCell align="right" padding="none" sx={{ pr: 1 }}>
                       <EditButton row={row} />
                       <CompanyDeleteButton

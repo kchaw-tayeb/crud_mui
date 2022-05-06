@@ -20,12 +20,16 @@ import Switch from "../components/common/controls/Switch";
 import ToggleButton from "../components/common/controls/ToggleButton";
 import TransferList from "../components/common/controls/TransferList";
 import BasicDatePicker from "../components/common/controls/DatePicker";
+import AutoComplete from "../components/common/controls/AutoComplete";
+import AutoCompleteMultiple from "../components/common/controls/AutoCompleteMultipleValue";
 
 const genderItems = [
   { id: "male", title: "Male" },
   { id: "female", title: "Female" },
   { id: "other", title: "Other" },
 ];
+const options = ["ooredoo", "orange", "tunisie telecom"];
+const optionsM = ["sport", "music", "reading", "writing"];
 const initialFValues = {
   fullName: "",
 
@@ -36,6 +40,9 @@ const initialFValues = {
   hireDate: new Date(),
   range: [20, 37],
   rating: 2,
+  company: "",
+  isActive: false,
+  hobbies: "",
 };
 const Control = () => {
   const validate = (fieldValues = values) => {
@@ -218,7 +225,6 @@ const Control = () => {
                 value={values.hireDate}
                 onChange={handleInputChange}
               />
-
               <Slider
                 name="range"
                 label="range"
@@ -231,10 +237,29 @@ const Control = () => {
                 value={values.rating}
                 onChange={handleInputChange}
               />
-
-              {/* <Switch />
+              <AutoComplete
+                name="company"
+                label="Company"
+                value={values.company}
+                onChange={handleInputChange}
+                options={options}
+              />
+              {/* switch */}
+              <Switch
+                name="isActive"
+                label="Active Employee"
+                value={values.isActive}
+                onChange={handleInputChange}
+              />
+              <AutoCompleteMultiple
+                name="hobbies"
+                label="Hobbies"
+                value={values.hobbies}
+                onChange={handleInputChange}
+                options={optionsM}
+              />
               <ToggleButton />
-              <TransferList /> */}
+              <TransferList />
             </Box>
 
             <Button

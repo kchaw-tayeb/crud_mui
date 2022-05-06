@@ -10,6 +10,9 @@ import Layout from "./Layout";
 import Forms from "./screens/Forms";
 import Controls from "./screens/Control";
 import DataGrid from "./screens/DataGrid";
+import Chart from "./screens/Chart";
+import ChipPlayground from "./screens/ChipPlayground";
+import BasicGrid from "./screens/Grid";
 
 const theme = createTheme({
   palette: {
@@ -118,6 +121,9 @@ function App() {
             <Route exact path="/forms" element={<Forms />} />
             <Route exact path="/controls" element={<Controls />} />
             <Route exact path="/grid" element={<DataGrid />} />
+            <Route exact path="/chart" element={<Chart />} />
+            <Route exact path="/chip" element={<ChipPlayground />} />
+            <Route exact path="/basic_grid" element={<BasicGrid />} />
           </Routes>
         </Layout>
       </Router>

@@ -1,15 +1,32 @@
 import * as React from "react";
 import Switch from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-export default function BasicSwitches() {
+export default function BasicSwitches(props) {
+  const { name, label, value, onChange } = props;
+  const convertToDefEventPara = (name, value) => ({
+    target: {
+      name,
+      value,
+    },
+  });
   return (
-    <div>
-      <Switch {...label} defaultChecked />
-      <Switch {...label} />
-      <Switch {...label} disabled defaultChecked />
-      <Switch {...label} disabled />
-    </div>
+    <FormControl>
+      <FormControlLabel
+        label={label}
+        control={
+          <Switch
+            name={name}
+            checked={value}
+            onChange={(e) =>
+              onChange(convertToDefEventPara(name, e.target.checked))
+            }
+          />
+        }
+      />
+    </FormControl>
   );
 }

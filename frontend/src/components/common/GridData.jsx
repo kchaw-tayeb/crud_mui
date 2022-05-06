@@ -1,10 +1,17 @@
 import React from "react";
 
-import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridRowsProp,
+  GridColDef,
+  GridToolbar,
+} from "@mui/x-data-grid";
 // import { useDispatch, useSelector } from "react-redux";
 // import { listEmployees } from "../../actions/employeeActions";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CheckIcon from "@mui/icons-material/Check";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const columns = [
   {
@@ -23,9 +30,26 @@ const columns = [
     field: "phone",
     headerName: "Phone",
     type: "number",
-    width: 110,
+    width: 200,
     editable: true,
   },
+  {
+    field: "check",
+    headerName: "Check",
+
+    width: 80,
+    sortable: false,
+    renderCell: () => <CheckIcon />,
+  },
+  {
+    field: "clear",
+    headerName: "Clear",
+
+    width: 80,
+    sortable: false,
+    renderCell: () => <ClearIcon />,
+  },
+
   {
     field: "fullName",
     headerName: "Full name",
@@ -63,11 +87,17 @@ const GridData = () => {
     fetchData();
   }, []);
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 430, width: "100%" }}>
       <DataGrid
+        sx={{
+          "& .MuiButton-root": {
+            m: 1,
+          },
+        }}
         getRowId={(r) => r._id}
         rows={row}
         columns={columns}
+        components={{ Toolbar: GridToolbar }}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection

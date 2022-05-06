@@ -239,6 +239,206 @@ const Forms = () => {
                   </Grid>
                 </Grid>
               </Box>
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={3}>
+                  <Grid item xs={4} md={4}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+
+                  <Grid item xs={4} md={4}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={4} md={4}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={4}>
+                  <Grid item xs={3} md={3}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={3} md={3}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+
+                  <Grid item xs={3} md={3}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={3} md={3}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={5}>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={3} md={3}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={3} md={3}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={6}>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Adresse"
+                      variant="outlined"
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      size="small"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
               <TextField
                 id="outlined-basic"
                 label="Tva"

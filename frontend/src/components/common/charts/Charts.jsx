@@ -5,6 +5,9 @@ import PieChart from "./PieChart";
 import DoughnutChart from "./DoughnutChart";
 import PolarChart from "./PolarChart";
 import { UserData } from "./Data";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 
 const Charts = () => {
   const [userData, setUserData] = useState({
@@ -26,23 +29,43 @@ const Charts = () => {
     ],
   });
   return (
-    <div>
-      <div style={{ width: 700 }}>
-        <BarChart />
-      </div>
-      <div style={{ width: 700 }}>
-        <LineChart />
-      </div>
-      <div style={{ width: 300 }}>
-        <PieChart />
-      </div>
-      <div style={{ width: 300 }}>
-        <DoughnutChart />
-      </div>
-      <div style={{ width: 300 }}>
-        <PolarChart />
-      </div>
-    </div>
+    // <div>
+    //   <div>
+    //     <BarChart />
+    //   </div>
+    //   <div>
+    //     <LineChart />
+    //   </div>
+    //   <div>
+    //     <PieChart />
+    //   </div>
+    //   <div>
+    //     <DoughnutChart />
+    //   </div>
+    //   <div>
+    //     <PolarChart />
+    //   </div>
+    // </div>
+    <Box sx={{ width: "100%" }}>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item xs={6}>
+          <LineChart />
+        </Grid>
+        <Grid item xs={6}>
+          <BarChart />
+        </Grid>
+        <Grid item xs={6}>
+          <DoughnutChart />
+        </Grid>
+        <Grid item xs={6}>
+          <PieChart />
+        </Grid>
+
+        <Grid item xs={6}>
+          <PolarChart />
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

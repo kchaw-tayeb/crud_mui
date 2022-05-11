@@ -259,7 +259,6 @@ const Control = () => {
                 options={optionsM}
               />
               <ToggleButton />
-              <TransferList />
             </Box>
 
             <Button

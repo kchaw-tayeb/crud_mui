@@ -240,7 +240,7 @@ const Forms = () => {
                 </Grid>
               </Box>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} columnSpacing={{ xs: 2, md: 2 }}>
                   <Grid item xs={4} md={4}>
                     <TextField
                       id="outlined-basic"
@@ -275,7 +275,7 @@ const Forms = () => {
                 </Grid>
               </Box>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={4}>
+                <Grid container spacing={4} columnSpacing={{ xs: 2, md: 2 }}>
                   <Grid item xs={3} md={3}>
                     <TextField
                       id="outlined-basic"
@@ -320,7 +320,7 @@ const Forms = () => {
                 </Grid>
               </Box>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={5}>
+                <Grid container spacing={5} columnSpacing={{ xs: 2, md: 2 }}>
                   <Grid item xs={2} md={2}>
                     <TextField
                       id="outlined-basic"
@@ -375,7 +375,7 @@ const Forms = () => {
                 </Grid>
               </Box>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={6}>
+                <Grid container spacing={6} columnSpacing={{ xs: 2, md: 2 }}>
                   <Grid item xs={2} md={2}>
                     <TextField
                       id="outlined-basic"
@@ -439,15 +439,8 @@ const Forms = () => {
                   </Grid>
                 </Grid>
               </Box>
-              <TextField
-                id="outlined-basic"
-                label="Tva"
-                variant="outlined"
-                value={tva}
-                onChange={(e) => setTva(e.target.value)}
-                size="small"
-              />
             </Box>
+
             <Button
               variant="contained"
               type="submit"

@@ -279,6 +279,52 @@ function Layout(props) {
             </ListItemButton>
           </List>
         </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={location.pathname == "/feedback" ? collapseActive : collapse}
+              onClick={() => navigate("/feedback")}
+            >
+              <ListItemText primary="Feed Back" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={
+                location.pathname == "/navigation" ? collapseActive : collapse
+              }
+              onClick={() => navigate("/navigation")}
+            >
+              <ListItemText primary="Navigation" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={
+                location.pathname == "/transfer_list"
+                  ? collapseActive
+                  : collapse
+              }
+              onClick={() => navigate("/transfer_list")}
+            >
+              <ListItemText primary="Transfert List" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={location.pathname == "/images" ? collapseActive : collapse}
+              onClick={() => navigate("/images")}
+            >
+              <ListItemText primary="Images" />
+            </ListItemButton>
+          </List>
+        </Collapse>
         <ListItemButton
           sx={location.pathname == "/" ? itemListActive : itemList}
           onClick={() => navigate("/")}

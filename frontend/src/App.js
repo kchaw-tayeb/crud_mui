@@ -13,6 +13,10 @@ import DataGrid from "./screens/DataGrid";
 import Chart from "./screens/Chart";
 import ChipPlayground from "./screens/ChipPlayground";
 import BasicGrid from "./screens/Grid";
+import FeedBack from "./screens/FeedBack";
+import Navigation from "./screens/Navigations";
+import TransfertList from "./screens/TransfertList";
+import Images from "./screens/Images";
 
 const theme = createTheme({
   palette: {
@@ -124,6 +128,10 @@ function App() {
             <Route exact path="/chart" element={<Chart />} />
             <Route exact path="/chip" element={<ChipPlayground />} />
             <Route exact path="/basic_grid" element={<BasicGrid />} />
+            <Route exact path="/feedback" element={<FeedBack />} />
+            <Route exact path="/navigation" element={<Navigation />} />
+            <Route exact path="/transfer_list" element={<TransfertList />} />
+            <Route exact path="/images" element={<Images />} />
           </Routes>
         </Layout>
       </Router>

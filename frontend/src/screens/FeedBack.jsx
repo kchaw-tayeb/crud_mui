@@ -6,9 +6,9 @@ import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 
 import Box from "@mui/material/Box";
-import Charts from "../components/common/charts/Charts";
+import Feedback from "../components/common/feedback/Feedback";
 
-const Chart = () => {
+const FeedBack = () => {
   return (
     <div>
       <Typography
@@ -23,7 +23,7 @@ const Chart = () => {
         }}
         color="black"
       >
-        Charts
+        Chip Playground
       </Typography>
 
       <Breadcrumbs aria-label="breadcrumb" sx={{ mt: 1 }}>
@@ -31,7 +31,7 @@ const Chart = () => {
           Home
         </Link>
 
-        <Typography color="rgba(0, 0, 0, 0.6)">Charts</Typography>
+        <Typography color="rgba(0, 0, 0, 0.6)">Chip Playground</Typography>
       </Breadcrumbs>
       <Divider sx={{ marginTop: "24px", marginBottom: "24px" }} />
       <Box
@@ -48,7 +48,7 @@ const Chart = () => {
           },
         }}
       >
-        {/* <Paper
+        <Paper
           elevation={0}
           sx={{
             "& .MuiFormLabel-root": {
@@ -60,22 +60,36 @@ const Chart = () => {
 
             borderRadius: "6px",
           }}
-        > */}
-        {/* <Box
-          sx={{
-            pt: 1,
+        >
+          <Box
+            sx={{
+              pt: 1,
 
-            "& 	.MuiDivider-root::before": {
-              width: "1%",
-            },
-          }}
-        > */}
-        <Charts />
-        {/* </Box> */}
-        {/* </Paper> */}
+              "& 	.MuiDivider-root::before": {
+                width: "1%",
+              },
+            }}
+          >
+            <Feedback
+              variant="h6"
+              sx={{
+                fontSize: "1rem",
+                fontWeight: 500,
+                lineHeight: 1.25,
+                color: "black",
+
+                mb: 2,
+                mt: 1,
+                ml: 2,
+              }}
+            >
+              Chip Playground
+            </Feedback>
+          </Box>
+        </Paper>
       </Box>
     </div>
   );
 };
 
-export default Chart;
+export default FeedBack;

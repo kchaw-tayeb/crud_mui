@@ -29,42 +29,29 @@ function BarChart() {
         ],
         // borderColor: "black",
         // borderWidth: 2,
-        barThickness: 6,
+        barThickness: 5,
       },
       {
         label: "Users Lost",
         data: BarData.map((data) => data.userLost),
-        backgroundColor: [
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-        ],
+        backgroundColor: ["#C2D6F3"],
         // borderColor: "black",
         // borderWidth: 2,
-        barThickness: 6,
+        barThickness: 5,
       },
     ],
   });
   const options = {
     maintainAspectRatio: false,
-    categoryPercentage: 0.8,
-    barPercentage: 0.8,
     scales: {
       x: {
+        stacked: true,
         grid: {
           display: false,
         },
       },
       y: {
+        stacked: true,
         grid: {
           display: false,
         },
@@ -87,25 +74,13 @@ function BarChart() {
             fontWeight: 500,
             lineHeight: 1.25,
             color: "black",
+            mb: 5,
           }}
         >
-          Bar Chart
+          Desktop/Mobile
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            fontSize: "0.8125rem",
-            fontWeight: 400,
-            lineHeight: 1.43,
-            color: "rgba(0, 0, 0, 0.87)",
-            mt: 0.7,
-            mb: 3,
-          }}
-        >
-          A bar chart provides a way of showing data values represented as
-          vertical bars.
-        </Typography>
-        <Box sx={{ height: 300 }}>
+
+        <Box sx={{ height: 320 }}>
           <Bar data={userData} options={options} />
         </Box>
       </Box>

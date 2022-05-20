@@ -223,7 +223,7 @@ function Layout(props) {
               sx={location.pathname == "/forms" ? collapseActive : collapse}
               onClick={() => navigate("/forms")}
             >
-              <ListItemText primary="Default" />
+              <ListItemText primary="GridForms" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -322,6 +322,26 @@ function Layout(props) {
               onClick={() => navigate("/images")}
             >
               <ListItemText primary="Images" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={location.pathname == "/dashboard" ? collapseActive : collapse}
+              onClick={() => navigate("/dashboard")}
+            >
+              <ListItemText primary="Dashboard" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={location.pathname == "/uimages" ? collapseActive : collapse}
+              onClick={() => navigate("/uimages")}
+            >
+              <ListItemText primary="Upload" />
             </ListItemButton>
           </List>
         </Collapse>

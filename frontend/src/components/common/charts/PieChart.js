@@ -19,6 +19,12 @@ function PieChart({ chartData }) {
 
   const options = {
     maintainAspectRatio: false,
+    radius: "80%",
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
 
   return (

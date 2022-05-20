@@ -13,55 +13,35 @@ function LineChart() {
       {
         label: "Sales",
         data: LineData.map((data) => data.sales),
-        backgroundColor: [
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-          "#4782DA",
-        ],
+        backgroundColor: ["#4782DA"],
         borderColor: "#4782DA",
         borderWidth: 3,
-        fill: false,
+        fill: true,
         lineTension: 0.4,
         radius: 1,
-        pointBackgroundColor: "#FFFFFF",
+        // pointBackgroundColor: "#FFFFFF",
         pointBorderColor: "#4782DA",
         pointRadius: 3,
         pointBorderWidth: 1,
+        backgroundColor: (context) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+          gradient.addColorStop(0, "rgba(241,245,250,1)");
+          gradient.addColorStop(1, "rgba(241,245,250,0)");
+          return gradient;
+        },
       },
       {
         label: "Orders",
         data: LineData.map((data) => data.orders),
-        backgroundColor: [
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-          "#E0E0E0",
-        ],
+        backgroundColor: ["#E0E0E0"],
         borderColor: "#9E9E9E",
         borderWidth: 3,
+        pointRadius: 3,
+        pointBorderWidth: 1,
         fill: false,
         lineTension: 0.4,
         radius: 1,
-        pointRadius: 3,
-        pointBorderWidth: 1,
-        pointBackgroundColor: "#FFFFFF",
         borderDash: [5, 5],
       },
     ],
@@ -74,7 +54,7 @@ function LineChart() {
       },
     },
     scales: {
-      y: {
+      x: {
         grid: {
           display: false,
         },
@@ -94,22 +74,10 @@ function LineChart() {
             color: "black",
           }}
         >
-          Line Chart
+          Total revenue
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            fontSize: "0.8125rem",
-            fontWeight: 400,
-            lineHeight: 1.43,
-            color: "rgba(0, 0, 0, 0.87)",
-            mt: 0.7,
-            mb: 3,
-          }}
-        >
-          A line chart is a way of plotting data points on a line.
-        </Typography>
-        <Box sx={{ height: 300 }}>
+
+        <Box sx={{ height: 400, mt: 4 }}>
           <Line data={userData} options={options} />
         </Box>
       </Box>

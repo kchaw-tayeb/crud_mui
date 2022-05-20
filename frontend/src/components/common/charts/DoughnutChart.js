@@ -13,11 +13,19 @@ function DoughnutChart({ chartData }) {
         label: "Media",
         data: PieData.map((data) => data.numbers),
         backgroundColor: ["#0569FF", "#FF9800", "#FB2B1D", "#CACACA"],
+        cutout: "65%",
       },
     ],
   });
   const options = {
     maintainAspectRatio: false,
+    radius: "80%",
+
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
 
   return (

@@ -27,6 +27,16 @@ import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import Toggle from "../utils/Toggle";
 import IconsDisplay from "../utils/IconsDisplay";
+import { TablePagination, TableSortLabel } from "@mui/material";
+
+import InputBase from "@mui/material/InputBase";
+import { Search } from "react-feather";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { visuallyHidden } from "@mui/utils";
+import EnhancedTableHead from "./UseTable";
 
 export default function TableCompany() {
   /////////////////////////////
@@ -39,7 +49,131 @@ export default function TableCompany() {
     dispatch(listCompanies());
   }, [dispatch, deleteI]);
   const rows = companies;
-  ////////////////////////////////
+  /////////////pagination///////////////////
+  const [page, setPage] = React.useState(0);
+
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  ////////////////////sorting/////////////////////
+  const headCells = [
+    { id: "name", label: "Name" },
+    { id: "adresse", label: "Adresse" },
+    { id: "phone", label: "phone" },
+    { id: "tva", label: "Tva" },
+    { id: "state", label: "State", disableSorting: true },
+    { id: "chek", label: "Check", disableSorting: true },
+    { id: "clear", label: "Clear", disableSorting: true },
+    { id: "isenabled", label: "isEnabled", disableSorting: true },
+    { id: "icons", label: "Icons", disableSorting: true },
+    { id: "actions", label: "actions", disableSorting: true },
+  ];
+  const [order, setOrder] = useState("asc");
+  const [orderBy, setOrderBy] = useState("name");
+  const handleRequestSort = (event, property) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
+  const TblHead = (props) => {
+    const handleSortRequest = (cellId) => {
+      const isAsc = orderBy === cellId && order === "asc";
+      setOrder(isAsc ? "desc" : "asc");
+      setOrderBy(cellId);
+    };
+
+    return (
+      <TableHead>
+        <TableRow>
+          {headCells.map((headCell) => (
+            <TableCell
+              key={headCell.id}
+              sortDirection={orderBy === headCell.id ? order : false}
+            >
+              {headCell.disableSorting ? (
+                headCell.label
+              ) : (
+                <TableSortLabel
+                  active={orderBy === headCell.id}
+                  direction={orderBy === headCell.id ? order : "asc"}
+                  onClick={() => {
+                    handleSortRequest(headCell.id);
+                  }}
+                >
+                  {headCell.label}
+                </TableSortLabel>
+              )}
+            </TableCell>
+          ))}
+        </TableRow>
+      </TableHead>
+    );
+  };
+
+  function stableSort(array, comparator) {
+    const stabilizedThis = array.map((el, index) => [el, index]);
+
+    stabilizedThis.sort((a, b) => {
+      const order = comparator(a[0], b[0]);
+      if (order !== 0) return order;
+      return a[1] - b[1];
+    });
+    return stabilizedThis.map((el) => el[0]);
+  }
+  function descendingComparator(a, b, orderBy) {
+    if (
+      b[orderBy].toString().toLowerCase() < a[orderBy].toString().toLowerCase()
+    ) {
+      return -1;
+    }
+    if (
+      b[orderBy].toString().toLowerCase() > a[orderBy].toString().toLowerCase()
+    ) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function getComparator(order, orderBy) {
+    return order === "desc"
+      ? (a, b) => descendingComparator(a, b, orderBy)
+      : (a, b) => -descendingComparator(a, b, orderBy);
+  }
+
+  ///////////////////////
+
+  ////////////////////////search option ////////////
+  const [option, setOption] = useState("name");
+
+  const handleChange = (event) => {
+    setOption(event.target.value);
+  };
+  console.log(option);
+  ///////////////////////search/////////////////
+  const [filterFn, setFilterFn] = useState({
+    fn: (items) => {
+      return items;
+    },
+  });
+  const handleSearch = (e) => {
+    let target = e.target;
+    setFilterFn({
+      fn: (items) => {
+        if (target.value == "") return items;
+        else
+          return items.filter((x) =>
+            x[option].toString().toLowerCase().includes(target.value)
+          );
+      },
+    });
+  };
 
   return (
     <>
@@ -71,6 +205,7 @@ export default function TableCompany() {
               justifyContent: "space-between",
             }}
           >
+            {" "}
             <Typography
               variant="h6"
               sx={{
@@ -86,7 +221,37 @@ export default function TableCompany() {
             >
               Formik
             </Typography>
+            <Box>
+              <FormControl sx={{ mt: 1 }}>
+                <InputLabel id="demo-simple-select-label">Option</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={option}
+                  label="option"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"name"}>name</MenuItem>
+                  <MenuItem value={"adresse"}>adresse</MenuItem>
+                  <MenuItem value={"phone"}>phone</MenuItem>
+                  <MenuItem value={"tva"}>tva</MenuItem>
+                </Select>
+              </FormControl>
+              <InputBase
+                placeholder="Search topics..."
+                startAdornment={<Search size={26} color="#9e9e9e" />}
+                onChange={handleSearch}
+                sx={{
+                  fontSize: "0.8rem",
 
+                  "& .MuiSvgIcon-root": {
+                    marginRight: 1,
+                  },
+                  ml: 3,
+                  mt: 3,
+                }}
+              ></InputBase>
+            </Box>
             <Tooltip
               title="Add a new company"
               sx={{ justifyContent: "flex-end", m: 0.8 }}
@@ -116,7 +281,7 @@ export default function TableCompany() {
 
           <TableContainer component={Paper} elevation={0}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
+              {/* <TableHead>
                 <TableRow
                   sx={{ "& .MuiTableCell-root": { fontSize: "0.8125rem" } }}
                 >
@@ -131,59 +296,74 @@ export default function TableCompany() {
                   <TableCell align="left">Icons</TableCell>
                   <TableCell align="right">actions</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow
-                    key={row.name}
-                    sx={{
-                      "&:last-child td, &:last-child th": { border: 0 },
-                      "& .MuiTableCell-root": {
-                        fontSize: "0.8125rem",
-                        fontWeight: 400,
-                      },
-                    }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="left">{row.adresse}</TableCell>
-                    <TableCell align="left">{row.phone}</TableCell>
-                    <TableCell align="left">{row.tva}</TableCell>
-                    <TableCell align="left">
-                      <Chip
-                        label="Chip Outlined"
-                        variant="filled"
-                        color="primary"
-                      />
-                    </TableCell>
-                    <TableCell align="left">
-                      <CheckIcon />
-                    </TableCell>
-                    <TableCell align="left">
-                      <ClearIcon />
-                    </TableCell>
-                    <TableCell align="left">
-                      <Toggle />
-                    </TableCell>
-                    <TableCell align="left">
-                      <IconsDisplay />
-                    </TableCell>
+              </TableHead> */}
 
-                    <TableCell align="right" padding="none" sx={{ pr: 1 }}>
-                      <EditButton row={row} />
-                      <CompanyDeleteButton
-                        row={row}
-                        setDeleteI={setDeleteI}
-                        deleteI={deleteI}
-                      />
-                      <DetailsButton row={row} />
-                    </TableCell>
-                  </TableRow>
-                ))}
+              <TblHead />
+              <TableBody>
+                {stableSort(filterFn.fn(rows), getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+                  // {rows
+                  //   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => (
+                    <TableRow
+                      key={row.name}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                        "& .MuiTableCell-root": {
+                          fontSize: "0.8125rem",
+                          fontWeight: 400,
+                        },
+                      }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="left">{row.adresse}</TableCell>
+                      <TableCell align="left">{row.phone}</TableCell>
+                      <TableCell align="left">{row.tva}</TableCell>
+                      <TableCell align="left">
+                        <Chip
+                          label="Chip Outlined"
+                          variant="filled"
+                          color="primary"
+                        />
+                      </TableCell>
+                      <TableCell align="left">
+                        <CheckIcon />
+                      </TableCell>
+                      <TableCell align="left">
+                        <ClearIcon />
+                      </TableCell>
+                      <TableCell align="left">
+                        <Toggle />
+                      </TableCell>
+                      <TableCell align="left">
+                        <IconsDisplay />
+                      </TableCell>
+
+                      <TableCell align="right" padding="none" sx={{ pr: 1 }}>
+                        <EditButton row={row} />
+                        <CompanyDeleteButton
+                          row={row}
+                          setDeleteI={setDeleteI}
+                          deleteI={deleteI}
+                        />
+                        <DetailsButton row={row} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
         </Paper>
       </Box>
     </>

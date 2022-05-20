@@ -17,6 +17,8 @@ import FeedBack from "./screens/FeedBack";
 import Navigation from "./screens/Navigations";
 import TransfertList from "./screens/TransfertList";
 import Images from "./screens/Images";
+import Dashboard from "./screens/Dashboard";
+import Uimages from "./screens/UploadImages";
 
 const theme = createTheme({
   palette: {
@@ -132,6 +134,8 @@ function App() {
             <Route exact path="/navigation" element={<Navigation />} />
             <Route exact path="/transfer_list" element={<TransfertList />} />
             <Route exact path="/images" element={<Images />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/uimages" element={<Uimages />} />
           </Routes>
         </Layout>
       </Router>

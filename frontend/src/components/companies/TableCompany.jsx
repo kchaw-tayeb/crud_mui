@@ -167,10 +167,20 @@ export default function TableCompany() {
     setFilterFn({
       fn: (items) => {
         if (target.value == "") return items;
-        else
-          return items.filter((x) =>
-            x[option].toString().toLowerCase().includes(target.value)
+        else {
+          if (option !== "all") {
+            return items.filter((x) =>
+              x[option].toString().toLowerCase().includes(target.value)
+            );
+          }
+          return items.filter(
+            (x) =>
+              x["name"].toString().toLowerCase().includes(target.value) ||
+              x["adresse"].toString().toLowerCase().includes(target.value) ||
+              x["phone"].toString().toLowerCase().includes(target.value) ||
+              x["tva"].toString().toLowerCase().includes(target.value)
           );
+        }
       },
     });
   };
@@ -231,6 +241,7 @@ export default function TableCompany() {
                   label="option"
                   onChange={handleChange}
                 >
+                  <MenuItem value={"all"}>all</MenuItem>
                   <MenuItem value={"name"}>name</MenuItem>
                   <MenuItem value={"adresse"}>adresse</MenuItem>
                   <MenuItem value={"phone"}>phone</MenuItem>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -9,15 +9,25 @@ import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import CloseIcon from "@mui/icons-material/Close";
+import CircularProgressWithLabel from "./CircularProgress";
+import { Beforeunload } from "react-beforeunload";
+import Popup from "../../utils/Popup";
 
 const Input = styled("input")({
   display: "none",
 });
 const UploadImageList = () => {
+  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleShowDialog = () => {
+    setIsOpen(true);
+    console.log("cliked");
+  };
+
   const [selectedImages, setSelectedImages] = useState([]);
   const onSelectFile = (event) => {
     const selectedFiles = event.target.files;
-    console.log(selectedFiles);
+
     const selectedFilesArray = Array.from(selectedFiles);
 
     const imagesArray = selectedFilesArray.map((file) => {
@@ -26,31 +36,22 @@ const UploadImageList = () => {
 
     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
   };
+
+  const counter = useRef(0);
+  const imageLoaded = () => {
+    counter.current += 1;
+    setLoading(true);
+    if (counter.current >= selectedImages.length) {
+      setTimeout(() => setLoading(false), 5000);
+    }
+  };
+
   return (
-    // <label htmlFor="contained-button-file">
     <>
-      {/* <Input
-        accept="image/*"
-        id="contained-button-file"
-        multiple
-        type="file"
-        onChange={onSelectFile}
-      />
-      <Button variant="contained" component="span">
-        Upload
-      </Button> */}
-      {/* <label>
-        <input
-          type="file"
-          name="images"
-          onChange={onSelectFile}
-          multiple
-          accept="image/png , image/jpeg, image/webp"
-        />
-        <Button variant="contained" component="span">
-          Upload
-        </Button>
-      </label> */}
+      {loading && (
+        <Beforeunload onBeforeunload={(event) => event.preventDefault()} />
+      )}
+
       <label htmlFor="contained-button-file">
         <Input
           type="file"
@@ -64,28 +65,15 @@ const UploadImageList = () => {
           Upload
         </Button>
       </label>
-      {/* <Box>
-        {selectedImages &&
-          selectedImages.map((image, index) => {
-            return (
-              <div key={image}>
-                <img src={image} height="200" />
-                <Button
-                  onClick={() =>
-                    setSelectedImages(selectedImages.filter((e) => e !== image))
-                  }
-                >
-                  delete
-              </Button>
-              </div>
-            );
-          })}
-      </Box> */}
+
       {/* images list */}
-      <ImageList sx={{ width: "100%", height: "100%" }}>
+      {loading ? <CircularProgressWithLabel /> : <h1>upload images</h1>}
+
+      <ImageList cols={4} gap={10}>
         {selectedImages.map((item) => (
           <ImageListItem key={item}>
-            <img src={item} />
+            <img src={item} onLoad={imageLoaded} onClick={handleShowDialog} />
+
             <ImageListItemBar
               title={item.title}
               subtitle={item.author}
@@ -101,6 +89,13 @@ const UploadImageList = () => {
                 </IconButton>
               }
             />
+            {isOpen && (
+              <Popup openPopup={isOpen} setOpenPopup={setIsOpen}>
+                <>
+                  <img src={item} width="500px" height="500px"></img>
+                </>
+              </Popup>
+            )}
           </ImageListItem>
         ))}
       </ImageList>
@@ -110,74 +105,3 @@ const UploadImageList = () => {
 };
 
 export default UploadImageList;
-// ******************************
-// const UploadImageList = () => {
-//   const [selectedImages, setSelectedImages] = useState([]);
-//   const onSelectFile = (event) => {
-//     const selectedFiles = event.target.files;
-//     const selectedFilesArray = Array.from(selectedFiles);
-
-//     const imagesArray = selectedFilesArray.map((file) => {
-//       return URL.createObjectURL(file);
-//     });
-
-//     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
-//   };
-
-//   return (
-//     <section>
-//       <label>
-//         + Add Images
-//         <br />
-//         <span>up to 10 images</span>
-//         <input
-//           type="file"
-//           name="images"
-//           onChange={onSelectFile}
-//           multiple
-//           accept="image/png , image/jpeg, image/webp"
-//         />
-//       </label>
-//       <br />
-
-//       {selectedImages.length > 0 &&
-//         (selectedImages.length > 10 ? (
-//           <p>
-//             You can't upload more than 10 images! <br />
-//             <span>
-//               please delete <b> {selectedImages.length - 10} </b> of them{" "}
-//             </span>
-//           </p>
-//         ) : (
-//           <button
-//             onClick={() => {
-//               console.log("UPLOAD IMAGES");
-//             }}
-//           >
-//             UPLOAD {selectedImages.length} IMAGE
-//             {selectedImages.length === 1 ? "" : "S"}
-//           </button>
-//         ))}
-
-//       <div>
-//         {selectedImages &&
-//           selectedImages.map((image, index) => {
-//             return (
-//               <div key={image}>
-//                 <img src={image} height="200" alt="upload" />
-//                 <button
-//                   onClick={() =>
-//                     setSelectedImages(selectedImages.filter((e) => e !== image))
-//                   }
-//                 >
-//                   delete image
-//                 </button>
-//                 <p>{index + 1}</p>
-//               </div>
-//             );
-//           })}
-//       </div>
-//     </section>
-//   );
-// };
-// export default UploadImageList;

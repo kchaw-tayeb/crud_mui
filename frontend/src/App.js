@@ -19,6 +19,7 @@ import TransfertList from "./screens/TransfertList";
 import Images from "./screens/Images";
 import Dashboard from "./screens/Dashboard";
 import Uimages from "./screens/UploadImages";
+import ServerUpload from "./screens/ServerUpload";
 
 const theme = createTheme({
   palette: {
@@ -136,6 +137,7 @@ function App() {
             <Route exact path="/images" element={<Images />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/uimages" element={<Uimages />} />
+            <Route exact path="/server_Upload" element={<ServerUpload />} />
           </Routes>
         </Layout>
       </Router>

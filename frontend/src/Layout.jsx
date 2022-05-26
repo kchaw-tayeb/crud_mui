@@ -345,6 +345,20 @@ function Layout(props) {
             </ListItemButton>
           </List>
         </Collapse>
+        <Collapse in={openD} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton
+              sx={
+                location.pathname == "/server_Upload"
+                  ? collapseActive
+                  : collapse
+              }
+              onClick={() => navigate("/server_Upload")}
+            >
+              <ListItemText primary="UploadServer" />
+            </ListItemButton>
+          </List>
+        </Collapse>
         <ListItemButton
           sx={location.pathname == "/" ? itemListActive : itemList}
           onClick={() => navigate("/")}

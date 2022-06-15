@@ -11,6 +11,17 @@ import { useRef } from "react";
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import { useEffect } from "react";
+import RadioGroup from "./RadioGroup";
+import Skeleton from "@mui/material/Skeleton";
+import Options from "./Options";
+
+const imageListItems = [
+  { id: "masonry", title: "Masonry" },
+  { id: "quilted", title: "Quilted" },
+  { id: "standard", title: "Standrad" },
+  { id: "woven", title: "Woven" },
+];
 
 function CircularProgressWithLabel(props) {
   return (
@@ -50,22 +61,47 @@ function LinearProgressWithLabel(props) {
   );
 }
 const Upload = () => {
-  const [files, setFiles] = useState([]);
-  const [uploadedFile, setUploadedFile] = useState([]);
-  const [uploadPercentage, setUploadPercentage] = useState(0);
-
-  const onInputChange = (e) => {
-    setFiles(e.target.files);
+  const [imageDisplay, setImageDisplay] = useState("standard");
+  const handleInputChange = (e) => {
+    setImageDisplay(e.target.value);
+  };
+  ///////////////////get all image in database///////
+  const [images, setImages] = useState([]);
+  const [uploadedFile, setUploadedFile] = useState("");
+  const [loaded, setLoaded] = useState(false);
+  const onImageLoaded = () => {
+    setLoaded(true);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const [deletei, setDeleteI] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get("/api/upload");
+        setImages(response);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
 
+    fetchData();
+  }, [uploadedFile, deletei]);
+
+  ////////////////////////////////////////////////////
+  const [file, setFile] = useState("");
+
+  const [uploadPercentage, setUploadPercentage] = useState(0);
+  const onSubmit = () => {
+    // e.preventDefault();
+    console.log("file");
+    console.log(file);
     const data = new FormData();
+    data.append("file", file);
 
-    for (let i = 0; i < files.length; i++) {
-      data.append("file", files[i]);
-    }
+    ///////for multiple files/////////////
+    // for (let i = 0; i < files.length; i++) {
+    //   data.append("file", files[i]);
+    // }
 
     axios
       .post("/api/upload", data, {
@@ -83,13 +119,23 @@ const Upload = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setUploadedFile(response.data);
+        setFile("");
       })
       .catch((e) => {
         console.log("Upload Error");
       });
   };
+
+  const onInputChange = (e) => {
+    setFile(e.target.files[0]);
+    // setTimeout(onSubmit(), 2000);
+  };
+  useEffect(() => {
+    if (file) {
+      onSubmit();
+    }
+  }, [file]);
 
   return (
     <>
@@ -126,47 +172,106 @@ const Upload = () => {
             type="file"
             onChange={onInputChange}
             className="form-control"
-            multiple
+            multiple=""
             hidden
           />
         </Button>
-        <Button onClick={onSubmit} sx={{ ml: 3 }}>
+        {/* <Button onClick={onSubmit} sx={{ ml: 3 }}>
           Send To Server
-        </Button>
+        </Button> */}
       </form>
-
       <Box sx={{ width: "100%", ml: 2, pr: 2, pb: 5, mt: 2 }}>
         <CircularProgressWithLabel value={uploadPercentage} />
         <LinearProgressWithLabel value={uploadPercentage} />
       </Box>
+
       {/* <SimpleReactLightbox>
         <SRLWrapper>
-          {uploadedFile.map((file) => (
-            <li key={file.filename}>
+          <ImageList sx={{ ml: 2, mr: 2 }} variant="standard" cols={4} gap={15}>
+            <ImageListItem key={uploadedFile.filename}>
               <img
-                style={{ maxWidth: "200px" }}
-                src={file.filename}
-                alt={file.originalname}
+                src={uploadedFile.filename}
+                alt={uploadedFile.originalname}
+                loading="lazy"
               />
-            </li>
-          ))}
-        </SRLWrapper>
-      </SimpleReactLightbox> */}
-      <SimpleReactLightbox>
-        <SRLWrapper>
-          <ImageList sx={{ ml: 2, mr: 2 }} variant="masonry" cols={4} gap={15}>
-            {uploadedFile.map((item) => (
-              <ImageListItem key={item.filename}>
-                <img
-                  src={item.filename}
-                  alt={item.originalname}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            ))}
+            </ImageListItem>
           </ImageList>
         </SRLWrapper>
-      </SimpleReactLightbox>
+      </SimpleReactLightbox> */}
+
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: "1rem",
+          fontWeight: 500,
+          lineHeight: 1.25,
+          color: "black",
+          justifyContent: "flex-start",
+
+          mt: 2,
+          ml: 2,
+        }}
+      >
+        Get All Images
+      </Typography>
+      <Box sx={{ ml: 2 }}>
+        <RadioGroup
+          value={imageDisplay}
+          onChange={handleInputChange}
+          items={imageListItems}
+        />
+      </Box>
+      {images.length > 0 ? (
+        <SimpleReactLightbox>
+          <SRLWrapper>
+            <ImageList
+              sx={{ ml: 2, mr: 2, mb: 2, pb: 2 }}
+              variant={imageDisplay}
+              cols={4}
+              gap={15}
+            >
+              {images.map((file) => (
+                <ImageListItem key={file._id}>
+                  {!loaded && (
+                    <Skeleton variant="rectangular" width={210} height={300} />
+                  )}
+                  {loaded && (
+                    <Options
+                      imageId={file._id}
+                      deletei={deletei}
+                      setDeleteI={setDeleteI}
+                    />
+                  )}
+
+                  <img
+                    src={file.fileName}
+                    alt={file.fileName}
+                    onLoad={onImageLoaded}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </SRLWrapper>
+        </SimpleReactLightbox>
+      ) : (
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: "1rem",
+            fontWeight: 500,
+            lineHeight: 1.25,
+            color: "black",
+            justifyContent: "flex-start",
+
+            mt: 2,
+            ml: 2,
+            pb: 2,
+          }}
+        >
+          there are no images in the database
+        </Typography>
+      )}
     </>
   );
 };

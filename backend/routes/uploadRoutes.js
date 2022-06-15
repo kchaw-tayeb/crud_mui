@@ -2,6 +2,11 @@ import path from "path";
 import express from "express";
 import multer from "multer";
 import { fileURLToPath } from "url";
+import {
+  deleteSingleFile,
+  getallSingleFiles,
+  singleFileUpload,
+} from "../controllers/fileuploaderController.js";
 const router = express.Router();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +37,8 @@ const storage = multer.diskStorage({
     cb(null, "public");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
+    // cb(null, Date.now() + "-" + file.originalname);
+    cb(null, Date.now() + ".jpg");
   },
 });
 const multi_upload = multer({
@@ -51,38 +57,41 @@ const multi_upload = multer({
       return cb(err);
     }
   },
-}).array("file", 10);
-router.post("/", (req, res) => {
-  multi_upload(req, res, function (err) {
-    console.log(req.files);
-    //multer error
-    if (err instanceof multer.MulterError) {
-      console.log(err);
-      res
-        .status(500)
-        .send({
-          error: { msg: `multer uploading error: ${err.message}` },
-        })
-        .end();
-      return;
-    } else if (err) {
-      //unknown error
-      if (err.name == "ExtensionError") {
-        res
-          .status(413)
-          .send({ error: { msg: `${err.message}` } })
-          .end();
-      } else {
-        res
-          .status(500)
-          .send({ error: { msg: `unknown uploading error: ${err.message}` } })
-          .end();
-      }
-      return;
-    }
-    res.status(200).send(req.files);
-  });
-});
+}).single("file");
+router.post("/", multi_upload, singleFileUpload);
+router.get("/", getallSingleFiles);
+router.delete("/:id", deleteSingleFile);
+// router.post("/", (req, res) => {
+//   multi_upload(req, res, function (err) {
+//     console.log(req.files);
+//     //multer error
+//     if (err instanceof multer.MulterError) {
+//       console.log(err);
+//       res
+//         .status(500)
+//         .send({
+//           error: { msg: `multer uploading error: ${err.message}` },
+//         })
+//         .end();
+//       return;
+//     } else if (err) {
+//       //unknown error
+//       if (err.name == "ExtensionError") {
+//         res
+//           .status(413)
+//           .send({ error: { msg: `${err.message}` } })
+//           .end();
+//       } else {
+//         res
+//           .status(500)
+//           .send({ error: { msg: `unknown uploading error: ${err.message}` } })
+//           .end();
+//       }
+//       return;
+//     }
+//     res.status(200).send(req.file);
+//   });
+// });
 
 export default router;
 // import path from "path";

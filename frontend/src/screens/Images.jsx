@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 
 import Box from "@mui/material/Box";
 import SwipeableTextMobileStepper from "../components/common/images/Images";
+import DragDrop from "../components/common/drackanddrop/DrackAndDrop";
 
 const Images = () => {
   return (
@@ -70,7 +71,7 @@ const Images = () => {
               },
             }}
           >
-            <SwipeableTextMobileStepper />
+            <DragDrop />
           </Box>
         </Paper>
       </Box>
